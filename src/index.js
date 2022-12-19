@@ -46,7 +46,7 @@ import ContactDAO from './contact_dao.js';
              return;
         }
 
-        console.log("Wrong answer. You should wtite the rigth statements ;)");
+        console.log("Wrong answer. You should write the right statements ;)");
     });
     process.stdin.on('end', () => {
         process.exit(0);
