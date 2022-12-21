@@ -42,12 +42,22 @@ import ContactDAO from './contact_dao.js';
                     }
                     console.log('phones: ${JSON.stringify(phones)}');
                     let comment = readlineSync.question('Insert comment: ');
+                    ContactDAO.add(new Contact(phones, firstName, lastName, comment));
+                    ContactDAO.save();
+                    continue;
                 }
                 return;
             }
             if (text === "delete" || text === "delete\r\n") {
-                // code here
-                return;
+                let id = readlineSync.question('Insert id: ');
+                let index = ContactDAO.delete(id);
+                if(index){
+                    console.log('You deleted ${index} contact');
+                }else{
+                    console.log('${index} do not exist');
+                }
+                ContactDAO.save();
+                continue;
             }
             if (text === "update" || text === "update\r\n") {
                     // code here
